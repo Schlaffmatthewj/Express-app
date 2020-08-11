@@ -4,8 +4,12 @@
 
 **Allows you to search by city and or use a "find me" feature to see you area's popular restaurants and cuisine.**
 
+# Project Workflow
 ## Wire Frames
 <a href=#>PLACEHOLDER</a>
+
+## Schema diagram
+<a href=/readMeAssets/schema_diagram.png>--SCHEMA--</a>
 
 ## User Story
 
