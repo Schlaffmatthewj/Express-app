@@ -6,10 +6,10 @@
 
 # Project Workflow
 ## Wire Frames
-<a href=#>PLACEHOLDER</a>
+<a href=/README/wireframes.md>--WIREFRAMES--</a>
 
 ## Schema diagram
-<a href=/readMeAssets/schema_diagram.png>--SCHEMA--</a>
+<a href=/README/schema.md>--SCHEMA--</a>
 
 ## User Story
 
