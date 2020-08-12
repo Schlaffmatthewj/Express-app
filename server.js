@@ -37,7 +37,6 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-    console.log('HOME PAGE USER', req.user)
     res.render('index');
 });
 
