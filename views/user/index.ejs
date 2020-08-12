@@ -1,5 +1,10 @@
 <%- include('../partials/boilerplate') -%>
+<% console.log('FIND THIS!!!!!!!!!!', data.user.id) %>
 
-<h3>Main Search Page</h3>
+<h3><%= data.user.username %>'s PAGE</h3>
+
+<form method="GET" action="/user/<%= data.user.id %>/edit">
+    <input type="submit" value="Edit My User" />
+</form>
 
 <%- include('../partials/end') -%>

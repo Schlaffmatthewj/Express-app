@@ -10,8 +10,13 @@ userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
     res.render('auth/register');
 });
 
-userRouter.get('/:id([0-9]+)', userController.show);
-// userRouter.delete('/:id', userController.delete);
+
+userRouter.get('/:id([0-9]+)', userController.index);
+userRouter.get('/:id([0-9]+)/edit', userController.show, (req, res) => {
+    res.render('user/')
+});
+userRouter.put('/:id([0-9]+)', userController.update);
+userRouter.delete('/:id', userController.delete);
 
 // userRouter.get('/city', userController.city);
 // userRouter.get('/city/:id([0-9]+)', userController.cityShow);

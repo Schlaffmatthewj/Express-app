@@ -7,7 +7,7 @@ const session = require('express-session');
 const passport = require('passport');
 
 const authRouter = require('./routes/auth-router');
-// const searchRouter = require('./routes/search-router');
+const searchRouter = require('./routes/search-router');
 const userRouter = require('./routes/user-router');
 
 const app = express();
@@ -37,12 +37,15 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {
+        message: 'ok',
+        data: { user: req.user },
+    });
 });
 
 
 app.use('/auth', authRouter);
-// app.use('/search', searchRouter);
+app.use('/search', searchRouter);
 app.use('/user', userRouter);
 
 
