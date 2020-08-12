@@ -12,6 +12,10 @@ class User {
         return db.oneOrNone('SELECT * FROM users WHERE username = $1', username);
     }
 
+    static getById(id) {
+        return db.oneOrNone('SELECT * FROM users WHERE id = $1', id);
+    }
+
     save() {
         return db
         .one(
@@ -43,5 +47,33 @@ class User {
     delete() {
         return db.oneOrNone('DELETE FROM users WHERE id = $1', this.id);
         // NEED TO ALSO DELETE FROM THE user_cities & user_restaurants????
+    }
+
+
+    // NEED PARAMS AND TO JOIN THE TABLES \/\/\/
+    getAllCities() {
+        return db.manyOrNone('SELECT * FROM user_cities WHERE id = $1', this.id);
+    }
+
+    getCityById() {
+        // not quite sure yet with the join
+    }
+
+    getAllRestaurants() {
+        return db.manyOrNone('SELECT * FROM user_restaurants WHERE id = $1', this.id)
+    }
+    
+    getRestaurantById() {
+        // not quite sure yet with the join
+    }
+    // NEED PARAMS AND TO JOIN THE TABLES ^^^^
+
+
+    deleteCity() {
+        return db.oneOrNone('DELETE FROM user_cities WHERE id = $1,', this.id);
+    }
+
+    deleteRestaurant() {
+        return db.oneOrNone('DELETE FROM user_restaurants WHERE id = $1', this.id);
     }
 }

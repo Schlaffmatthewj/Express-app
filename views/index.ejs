@@ -1,0 +1,15 @@
+<%- include('./partials/boilerplate') -%>
+
+<div class="welcome">
+    <h1>to my Restaurant-express App</h1>
+    <div class="loginReg">
+        <form class="login" method="GET" action="/auth/login">
+            <input type="submit" value="Login">
+        </form>
+        <form class="register" method="GET" action="/user/new">
+            <input type="submit" value="Create New User">
+        </form>
+    </div>
+</div>
+<script src="/src/main.js"></script>
+<%- include('./partials/end') -%>

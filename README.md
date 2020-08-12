@@ -23,11 +23,11 @@
 
 - GET '/', homepage
 - GET '/auth'
-    - GET '/register', new user
-        - POST '/user'
     - GET '/login', sign into account
     - GET '/logout', signout of account
 - GET '/user', index shows all cities in database
+    - GET '/new', create new account
+    - POST '/', adds new user to database
     - GET '/:id', individual profile with personal shortcuts to cities & restaurants
     - PUT '/:id', change username and email
     - DELETE '/:id', this user completely
@@ -42,7 +42,7 @@
         - POST '/user/city', saves to user profile
         - POST '/city', saves city in the city database
     - GET '/rest', shows all new restaurants from selected city
-        - POST '/user/rest' saves restaurant to user profile & restaurant database
+        - POST '/user/rest', saves restaurant to user profile & restaurant database
         - POST '/rest', saves restaurant to the restaurant database
 
 ## Specs
