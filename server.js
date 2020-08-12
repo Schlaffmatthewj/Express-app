@@ -6,9 +6,9 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 
-// const authRouter = require('./routes/auth-router');
+const authRouter = require('./routes/auth-router');
 // const searchRouter = require('./routes/search-router');
-// const userRouter = require('./routes/user-router');
+const userRouter = require('./routes/user-router');
 
 const app = express();
 require('dotenv').config();
@@ -37,13 +37,14 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
+    console.log('HOME PAGE USER', req.user)
     res.render('index');
 });
 
 
-// app.use('/auth', authRouter);
+app.use('/auth', authRouter);
 // app.use('/search', searchRouter);
-// app.use('/user', userRouter);
+app.use('/user', userRouter);
 
 
 app.use('*', (req, res) => {

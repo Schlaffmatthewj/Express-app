@@ -10,7 +10,7 @@ userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
     res.render('auth/register');
 });
 
-// userRouter.get('/:id([0-9]+)', userController.show);
+userRouter.get('/:id([0-9]+)', userController.show);
 // userRouter.delete('/:id', userController.delete);
 
 // userRouter.get('/city', userController.city);

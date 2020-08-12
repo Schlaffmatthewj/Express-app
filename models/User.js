@@ -77,3 +77,5 @@ class User {
         return db.oneOrNone('DELETE FROM user_restaurants WHERE id = $1', this.id);
     }
 }
+
+module.exports = User;

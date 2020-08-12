@@ -3,14 +3,7 @@ const User = require('../models/User');
 
 const userController = {
     index(req, res, next) {
-        // MAKE THIS THE USER INDEX VIEW
-        // WITH GLOBAL CITIES AVAILABLE
-        res.json({
-            message: 'ok',
-            data: {
-                user: req.user,
-            },
-        });
+        res.render('user/index');
     },
 
     show(req, res, next) {
@@ -30,7 +23,7 @@ const userController = {
         .then(user => {
             req.login(user, (err) => {
                 if (err) return next(err);
-                res.redirect('/user');
+                res.render('user/index')
             });
         })
         .catch(next);

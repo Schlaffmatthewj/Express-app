@@ -1,8 +1,9 @@
 <%- include('../partials/boilerplate') -%>
 
-<form method="GET" action="/auth/login">
+<form method="POST" action="/auth/login">
     <input type="text" name="username" placeholder="Username" />
     <input type="password" name="password" placeholder="Password" />
+    <input type="submit" value="Login" />
 </form>
 
 <%- include('../partials/end') -%>
