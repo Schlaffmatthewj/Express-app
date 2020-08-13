@@ -2,9 +2,14 @@
 <% console.log('FIND THIS!!!!!!!!!!', data.user.id) %>
 
 <h3><%= data.user.username %>'s PAGE</h3>
+<div class="allCities">
+    <ul>
+        <li>This will be the list of cities</li>
+    </ul>
+</div>
 
 <form method="GET" action="/user/<%= data.user.id %>/edit">
-    <input type="submit" value="Edit My User" />
+    <input type="submit" value="Edit <%= data.user.username %>'s Info" />
 </form>
 
 <%- include('../partials/end') -%>

@@ -36,12 +36,8 @@ app.listen(PORT, () => {
     console.log(`We've made contact with port: ${PORT}`)
 });
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        message: 'ok',
-        data: { user: req.user },
-    });
-});
+const authHelpers = require('./services/auth/auth-helpers');
+app.get('/', authHelpers.loginRedirect, (req, res) => res.render('index'));
 
 
 app.use('/auth', authRouter);

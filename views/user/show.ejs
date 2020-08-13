@@ -1,9 +1,0 @@
-<%- include('../partials/boilerplate') %>
-
-<form method="POST" action="/user/<%= data.user.id %>?_method=PUT">
-    <input type="text" name="username" value="<%= data.user.username %>" placeholder="Username" />
-    <input type="email" name="email" value="<%= data.user.email %>" placeholder="Email" />
-    <input type="submit" value="Make Changes" />
-</form>
-
-<%- include('../partials/end') %>

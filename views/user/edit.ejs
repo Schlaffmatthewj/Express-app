@@ -1,0 +1,11 @@
+<%- include('../partials/boilerplate') %>
+
+<form method="POST" action="/user/<%= user.id %>?_method=PUT">
+    <input type="email" name="email" value="<%= user.email %>" placeholder="Email" />
+    <input type="submit" value="Make Changes" />
+</form>
+<form method="POST" action="/user/<%= user.id %>?_method=DELETE">
+    <input type="submit" value="DELETE USER" />
+</form>
+
+<%- include('../partials/end') %>

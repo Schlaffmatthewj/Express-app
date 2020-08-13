@@ -2,20 +2,28 @@ const db = require('../db/config');
 
 class User {
     constructor(user) {
-        this.id = user.id;
+        this.id = user.id || null;
         this.username = user.username;
         this.email = user.email;
         this.password_digest = user.password_digest;
     }
 
     static findByUsername(username) {
-        return db.oneOrNone('SELECT * FROM users WHERE username = $1', username);
+        return db
+        .oneOrNone('SELECT * FROM users WHERE username = $1', username)
+        .then(user => {
+            if (user) return new this(user);
+            throw new Error('no user found');
+        });
     }
 
     static getById(id) {
         return db
         .oneOrNone('SELECT * FROM users WHERE id = $1', id)
-        .then(user => new this(user));
+        .then(user => {
+            if (user) return new this(user);
+            throw new Error('no user found');
+        });
     }
 
     save() {
@@ -23,8 +31,7 @@ class User {
         .one(
             `INSERT INTO users
             (username, email, password_digest)
-            VALUES
-            ($/username/, $/email/, $/password_digest/)
+            VALUES ($/username/, $/email/, $/password_digest/)
             RETURNING *`,
             this
         )
@@ -43,41 +50,13 @@ class User {
             RETURNING *`,
             this
         )
-        .then(user => Object.assign(this, user));
+        .then(updatedUser => Object.assign(this, updatedUser));
     }
 
+    // THIS NEED TO CLEAR OUT THE JOIN TABLES ALSO
     delete() {
         return db.oneOrNone('DELETE FROM users WHERE id = $1', this.id);
-        // NEED TO ALSO DELETE FROM THE user_cities & user_restaurants????
     }
-
-
-    // NEED PARAMS AND TO JOIN THE TABLES \/\/\/
-    getAllCities() {
-        return db.manyOrNone('SELECT * FROM user_cities WHERE id = $1', this.id);
-    }
-
-    getCityById() {
-        // not quite sure yet with the join
-    }
-
-    getAllRestaurants() {
-        return db.manyOrNone('SELECT * FROM user_restaurants WHERE id = $1', this.id)
-    }
-    
-    getRestaurantById() {
-        // not quite sure yet with the join
-    }
-    // NEED PARAMS AND TO JOIN THE TABLES ^^^^
-
-
-    deleteCity() {
-        return db.oneOrNone('DELETE FROM user_cities WHERE id = $1,', this.id);
-    }
-
-    deleteRestaurant() {
-        return db.oneOrNone('DELETE FROM user_restaurants WHERE id = $1', this.id);
-    }
-}
+};
 
 module.exports = User;
