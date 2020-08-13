@@ -4,7 +4,6 @@
 <div class="allCities">
     <% if (data.cities) { %>
         <ul>
-            <% console.log(data.cities) %>
             <% for (let city of data.cities) { %>
                 <li><a href="/user/city/<%= city.id %>"><%= city.name %></a></li>
             <% } %>

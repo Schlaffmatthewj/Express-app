@@ -1,4 +1,11 @@
 const db = require('../db/config');
+const City = require('../models/City');
+
+
+
+
+// THIS PAGE IS INACCURATE
+
 
 class User_cities {
     constructor(user_cities) {
@@ -10,7 +17,10 @@ class User_cities {
     static getAllByUser_id(id) {
         return db
         .manyOrNone('SELECT * FROM user_cities WHERE user_id = $1', id)
-        .then(allCities => allCities.map(city => new this(city)));
+        .then(allCities => allCities.map(city => {
+            console.log('GETALLBYUSERID', city);
+            return City.getById(city.city_id);
+        }))
     }
 
     save() {

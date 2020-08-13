@@ -4,11 +4,14 @@
 <div class="allCities">
     <ul>
         <% for (let city of data.cities) { %>
-            <li><%= city.name %></li>
+            <li><a href="/search/city/fetch"><%= city.name %></a></li>
         <% } %>
     </ul>
 </div>
 
+<form method="POST" action="/user/restaurant">
+    <input type="submit" value="restaurants" />
+</form>
 
 <form method="GET" action="/search/new">
     <input type="submit" value="Start a New Search" />

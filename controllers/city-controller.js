@@ -12,20 +12,19 @@ cityController.index = (req, res, next) => {
 };
 
 cityController.show = (req, res, next) => {
-    console.log()
-    City.getById()
-    .then(city => {
-        res.render('city/index', {
-            message: 'ok',
-            data: { city },
-        });
-    })
-    .catch(next);
+    // console.log()
+    // City.getById()
+    // .then(city => {
+    //     res.render('city/index', {
+    //         message: 'ok',
+    //         data: { city },
+    //     });
+    // })
+    // .catch(next);
 };
 
 cityController.create = (req, res, next) => {
     new City({
-        // this will be from the fetch
         name: req.body.name,
         longitude: res.locals.longitude,
         latitude: res.locals.latitude,

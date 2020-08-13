@@ -18,9 +18,9 @@ class City {
         return db
         .oneOrNone('SELECT * FROM cities WHERE id = $1', id)
         .then(city => {
-            if (city) return new this(city);
-            throw new Error('City not found');
-        });
+            return city;
+        })
+        .catch(err => err);
     }
 
     save() {
@@ -36,9 +36,10 @@ class City {
         .then(savedCity => Object.assign(this, savedCity));
     }
 
-    delete() {
-        return db.oneOrNone('DELETE FROM cities WHERE id = $1', this.id);
-    }
+    // delete() {
+    //     // THIS MAY NEED TO ONLY BE FOR THE RELATIONSHIP  NEVER DELETE CITY DATA
+    //     return db.oneOrNone('DELETE FROM cities WHERE id = $1', this.id);
+    // }
 };
 
 module.exports = City;
