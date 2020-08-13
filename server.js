@@ -26,7 +26,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.set('views', 'views');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -36,14 +35,12 @@ app.listen(PORT, () => {
     console.log(`We've made contact with port: ${PORT}`)
 });
 
-const authHelpers = require('./services/auth/auth-helpers');
-app.get('/', authHelpers.loginRedirect, (req, res) => res.render('index'));
-
+app.get('/', (req, res) => res.render('index'));
+app.get('/about', (req, res) => res.render('about'));
 
 app.use('/auth', authRouter);
 app.use('/search', searchRouter);
 app.use('/user', userRouter);
-
 
 app.use('*', (req, res) => {
     res.status(404).send({

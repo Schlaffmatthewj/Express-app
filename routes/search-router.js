@@ -2,7 +2,14 @@
 const express = require('express');
 const searchRouter = express.Router();
 
-searchRouter.get('/', (req, res) => res.render('search/index')); //ADD MIDDLEWARE TO GET DATA FROM HELPERS
+const cityController = require('../controllers/city-controller');
+
+searchRouter.get('/', cityController.index, (req, res) => {
+    res.render('search/index', {
+        message: 'ok',
+        data: { cities: res.locals.globalCities }
+    });
+});
 searchRouter.get('/new', (req, res) => res.render('search/new'));
 
 module.exports = searchRouter;

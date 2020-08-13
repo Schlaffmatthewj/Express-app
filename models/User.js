@@ -1,4 +1,5 @@
 const db = require('../db/config');
+const City = require('./City');
 
 class User {
     constructor(user) {
@@ -56,6 +57,17 @@ class User {
     // THIS NEED TO CLEAR OUT THE JOIN TABLES ALSO
     delete() {
         return db.oneOrNone('DELETE FROM users WHERE id = $1', this.id);
+    }
+
+    findUserCities() {
+        return db
+        .manyOrNone(
+            `SELECT * FROM cities
+            JOIN user_cities ON cities.id = user_cities.city_id
+            JOIN users ON user_cities.user_id = users.id
+            WHERE users.id = $1`, this.id
+        )
+        .then(cities => cities.map(city => new City(city)));
     }
 };
 

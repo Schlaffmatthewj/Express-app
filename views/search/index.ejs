@@ -1,6 +1,15 @@
 <%- include('../partials/boilerplate') -%>
 
 <h3>Main Search Page</h3>
+<div class="allCities">
+    <ul>
+        <% for (let city of data.cities) { %>
+            <li><%= city.name %></li>
+        <% } %>
+    </ul>
+</div>
+
+
 <form method="GET" action="/search/new">
     <input type="submit" value="Start a New Search" />
 </form>

@@ -1,17 +1,24 @@
 const bcrypt = require('bcryptjs');
 
 const User = require('../models/User');
+const City = require('../models/City');
 
 
 const userController = {};
 
 userController.index = (req, res, next) => {
-    // console.log('USER LOGGING IN', req.user);
-    // SHOW ALL PERSONAL CITIES AND RESTAURANTS
-    res.render('user/index', {
-        message: 'ok',
-        data: { user: req.user },
+    req.user
+    .findUserCities()
+    .then(allCities => {
+        res.render('user/index', {
+            message: 'ok',
+            data: {
+                user: req.user,
+                cities: allCities,
+            },
+        });
     })
+    .catch(next);
 };
 
 userController.create = (req, res, next) => {

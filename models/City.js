@@ -29,7 +29,7 @@ class City {
             `INSERT INTO cities
             (name, longitude, latitude)
             VALUES
-            ($/name/, $/longitude/, $/latitude)
+            ($/name/, $/longitude/, $/latitude/)
             RETURNING *`,
             this
         )

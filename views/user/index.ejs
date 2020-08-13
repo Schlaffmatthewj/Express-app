@@ -1,15 +1,22 @@
 <%- include('../partials/boilerplate') -%>
-<% console.log('FIND THIS!!!!!!!!!!', data.user.id) %>
 
 <h3><%= data.user.username %>'s PAGE</h3>
 <div class="allCities">
-    <ul>
-        <li>This will be the list of cities</li>
-    </ul>
+    <% if (data.cities) { %>
+        <ul>
+            <% console.log(data.cities) %>
+            <% for (let city of data.cities) { %>
+                <li><a href="/user/city/<%= city.id %>"><%= city.name %></a></li>
+            <% } %>
+        </ul>
+    <% } %>
 </div>
 
 <form method="GET" action="/user/<%= data.user.id %>/edit">
     <input type="submit" value="Edit <%= data.user.username %>'s Info" />
+</form>
+<form method="GET" action="/auth/logout">
+    <input type="submit" value="Sign Off" />
 </form>
 
 <%- include('../partials/end') -%>

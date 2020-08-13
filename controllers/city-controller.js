@@ -5,15 +5,20 @@ const cityController = {};
 cityController.index = (req, res, next) => {
     City.getAll()
     .then(cities => {
-        next(cities);
+        res.locals.globalCities = cities;
+        next();
     })
     .catch(next);
 };
 
 cityController.show = (req, res, next) => {
-    City.getById(req.params.id)
+    console.log()
+    City.getById()
     .then(city => {
-        next(city);
+        res.render('city/index', {
+            message: 'ok',
+            data: { city },
+        });
     })
     .catch(next);
 };
@@ -22,11 +27,14 @@ cityController.create = (req, res, next) => {
     new City({
         // this will be from the fetch
         name: req.body.name,
-        longitude: req.body.longitude,
-        latitude: req.body.latitude,
+        longitude: res.locals.longitude,
+        latitude: res.locals.latitude,
     })
     .save()
-    .then(() => res.redirect('/search'))
+    .then((savedCity) => {
+        res.locals.city_id = savedCity.id;
+        next();
+    })
     .catch(next);
 };
 
