@@ -6,11 +6,21 @@
 <% }) %>
 <a href="<%= data.city_link %>" target="_blank">City Link</a>
 
+
 <ul>
-    <% for (let city of data.city_nearby) { %>
-        <li><%= city %></li>
-    <% } %>
+    <% data.nearby_restaurants.map(rest => { %>
+        <li><%= rest.restaurant.name %></li>
+        <li>
+            <ul>
+                <li><%= rest.restaurant.location.address %></li>
+                <li><%= rest.restaurant.cuisines %></li>
+                <li><a href="/restaurant/<%= rest.restaurant.id %>">More Details</a></li>
+            </ul>
+        </li>
+    <% }) %>
 </ul>
+
+
 <% if (user) { %>
     <form method="GET" action="/user">
         <input type="submit" value="Back to <%= data.user.username %>'s'  Page"/>

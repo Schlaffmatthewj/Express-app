@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 require('dotenv').config();
 
-const openRestaurant = (req, res, next) => {
+const unPackCity = (req, res, next) => {
     fetch(`https://developers.zomato.com/api/v2.1/geocode?lat=${res.locals.latitude}&lon=${res.locals.longitude}`, {
         headers: {
             user_key: process.env.ZOMATO_KEY,
@@ -15,9 +15,8 @@ const openRestaurant = (req, res, next) => {
         res.locals.nearBy = jsonRes.nearby_restaurants;
         res.locals.id = res.locals.id;
         res.locals.user = res.locals.user;
-        return jsonRes;
+        next();
     })
-    .then(() => next())
     .catch(err => {
         console.log(err);
         next(err);
@@ -25,5 +24,5 @@ const openRestaurant = (req, res, next) => {
 };
 
 module.exports = {
-    openRestaurant,
+    unPackCity,
 };

@@ -33,7 +33,7 @@ class User_cities {
     }
 
     delete() {
-        return db.oneOrNone('DELETE FROM user_cities WHERE id = $1', this.id)
+        return db.oneOrNone('DELETE FROM user_cities WHERE id = $1', this.id);
     }
 };
 

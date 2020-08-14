@@ -12,21 +12,22 @@ cityController.index = (req, res, next) => {
 };
 
 cityController.show = (req, res, next) => {
+    console.log('LIST OF RESTS', res.locals.nearby_restaurants)
     res.render('city/index', {
         message: 'ok',
         data: {
             city_name: res.locals.city_name,
             city_cuisine: res.locals.top_cuisines,
             city_link: res.locals.link,
-            city_nearby: res.locals.nearBy,
             city_id: res.locals.id,
+            nearby_restaurants: res.locals.nearBy,
             user: res.locals.user,
         },
     });
 };
 
 cityController.find = (req, res, next) => {
-    console.log('USER', req.user)
+    // console.log('USER', req.user)
     City.getById(req.params.id)
     .then(city => {
         res.locals.longitude = city.longitude;

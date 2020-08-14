@@ -1,4 +1,9 @@
 <%- include('../partials/boilerplate') %>
 
+<h3><%= data.name %></h3>
 
+
+<form method="POST" action="/user/restaurants/<%= data.id %>">
+    <input type="submit" value="Add to <%= data.user.username %>'s Page">
+</form>
 <%- include('../partials/end') %>
