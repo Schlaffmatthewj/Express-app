@@ -12,28 +12,6 @@ cityController.index = (req, res, next) => {
 };
 
 cityController.show = (req, res, next) => {
-    City.getById(res.locals.city_id || req.params.id)
-    .then(city => {
-        res.render('city/index', {
-            message: 'ok',
-            data: { city },
-        });
-    })
-    .catch(next);
-};
-
-cityController.find = (req, res, next) => {
-    City.getById(req.params.id)
-    .then(city => {
-        res.locals.long = city.longitude;
-        res.locals.lat = city.latitude;
-        res.locals.id = city.id;
-        next();
-    })
-    .catch(next);
-}
-
-cityController.page = (req, res, next) => {
     res.render('city/index', {
         message: 'ok',
         data: {
@@ -42,8 +20,22 @@ cityController.page = (req, res, next) => {
             city_link: res.locals.link,
             city_nearby: res.locals.nearBy,
             city_id: res.locals.id,
+            user: res.locals.user,
         },
     });
+};
+
+cityController.find = (req, res, next) => {
+    console.log('USER', req.user)
+    City.getById(req.params.id)
+    .then(city => {
+        res.locals.longitude = city.longitude;
+        res.locals.latitude = city.latitude;
+        res.locals.id = city.id;
+        res.locals.user = req.user;
+        next();
+    })
+    .catch(next);
 }
 
 cityController.create = (req, res, next) => {
@@ -55,7 +47,6 @@ cityController.create = (req, res, next) => {
     .save()
     .then((savedCity) => {
         res.locals.city_id = savedCity.id;
-        console.log('HELLOOOOOOO')
         next();
     })
     .catch(next);

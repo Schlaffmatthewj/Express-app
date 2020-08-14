@@ -5,7 +5,7 @@
     <% if (data.cities) { %>
         <ul>
             <% for (let city of data.cities) { %>
-                <li><%= city.name %></li>
+                <li><a href="/city/<%= city.id %>"><%= city.name %></a></li>
                 <form method="POST" action="/user/city/<%= city.id %>?_method=DELETE">
                     <input type="submit" value="Remove <%= city.name %>" />
                 </form>

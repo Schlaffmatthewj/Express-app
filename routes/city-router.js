@@ -2,11 +2,10 @@ const express = require('express');
 const cityRouter = express.Router();
 
 const cityController = require('../controllers/city-controller');
-const restaurantController = require('../controllers/restaurant-controller');
-const { getCityCoords } = require('../services/city/city-helpers');
-const { openRestaurant } = require('../services/restaurants/restaurants-helpers');
+const { getCityCoords } = require('../services/city/city-coords-helpers');
+const { openRestaurant } = require('../services/city/city-helpers');
 
-cityRouter.get('/:id([0-9]+)', cityController.find, openRestaurant, cityController.page);
-cityRouter.post('/', getCityCoords, cityController.create, cityController.show);
+cityRouter.get('/:id([0-9]+)', cityController.find, openRestaurant, cityController.show);
+cityRouter.post('/', getCityCoords, cityController.create, openRestaurant, cityController.show);
 
 module.exports = cityRouter;

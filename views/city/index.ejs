@@ -7,10 +7,15 @@
 <a href="<%= data.city_link %>" target="_blank">City Link</a>
 
 <ul>
-    <% for (let rest of data.city_nearby) { %>
-        <li><%= rest %></li>
+    <% for (let city of data.city_nearby) { %>
+        <li><%= city %></li>
     <% } %>
 </ul>
+<% if (user) { %>
+    <form method="GET" action="/user">
+        <input type="submit" value="Back to <%= data.user.username %>'s'  Page"/>
+    </form>
+<% } %>
 <form method="GET" action="/search">
     <input type="submit" value="Back to Main Search" />
 </form>
