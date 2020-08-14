@@ -35,10 +35,11 @@ restaurantController.find = (req, res, next) => {
 };
 
 restaurantController.create = (req, res, next) => {
+    console.log('RIGHT HERE', res.locals)
     new Restaurant({
-        name: req.body.name,
-        city_id: res.locals.city_id,
-        zomato_id: res.locals.zomato_id,
+        name: res.locals.name,
+        city_id: res.locals.location.city_id,
+        zomato_id: res.locals.id,
     })
     .save()
     .then(savedRest => {

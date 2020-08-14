@@ -10,6 +10,7 @@ const openRestaurant = (req, res, next) => {
     })
     .then(fetchRes => fetchRes.json())
     .then(jsonRes => {
+        console.log('IS IT AT LEAST RIGHT HERE', req.params)
         res.locals.id = jsonRes.id;
         res.locals.name = jsonRes.name;
         res.locals.restUrl = jsonRes.url;
@@ -29,6 +30,7 @@ const openRestaurant = (req, res, next) => {
         res.locals.photoAlbum = jsonRes.photos_url;
         res.locals.menu = jsonRes.menu_url;
         res.locals.phoneNum = jsonRes.phone_numbers;
+        res.locals.city_id = req.body.city_id;
         // MAY GET TO USER RATINGS ?????  /////
         next();
     })

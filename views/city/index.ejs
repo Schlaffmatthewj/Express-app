@@ -14,7 +14,10 @@
             <ul>
                 <li><%= rest.restaurant.location.address %></li>
                 <li><%= rest.restaurant.cuisines %></li>
-                <li><a href="/restaurant/<%= rest.restaurant.id %>">More Details</a></li>
+                <li><form method="GET" action="/restaurant/<%= rest.restaurant.id %>">
+                    <input type="number" name="city_id" value="<%= data.city_id %>" />
+                    <input type="submit" value="More Info" />
+                </form></li>
             </ul>
         </li>
     <% }) %>

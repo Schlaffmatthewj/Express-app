@@ -13,7 +13,8 @@ user_citiesController.saveForUser = (req, res, next) => {
 };
 
 user_citiesController.removeForUser = (req, res, next) => {
-    User_cities.getOneForUser(req.user.id, res.locals.city_id)
+    console.log('LOCALS', res.locals)
+    User_cities.getOneForUser(req.user.id, res.locals.id)
     .then(city => city.delete())
     .then(() => res.redirect('/user'))
     .catch(next);

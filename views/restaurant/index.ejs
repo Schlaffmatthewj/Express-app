@@ -16,6 +16,7 @@
 <p>Phone Number: <%= data.phone %></p>
 
 <form method="POST" action="/user/restaurant/<%= data.id %>">
+    <input type="hidden" name="city_id" value="<%= data.city_id %>">
     <input type="submit" value="Add <%= data.name %> to My Page">
 </form>
 <form method="GET" action="/search">

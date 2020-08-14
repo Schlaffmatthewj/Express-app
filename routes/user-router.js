@@ -7,6 +7,7 @@ const user_restaurantsController = require('../controllers/user_restaurants-cont
 const cityController = require('../controllers/city-controller');
 const restaurantController = require('../controllers/restaurant-controller');
 const { loginRedirect, loginRequired } = require('../services/auth/auth-helpers');
+const { openRestaurant } = require('../services/restaurants/restaurant-helpers');
 
 // NEED TO ADD THE MIDDLE WEAR THAT FINDS CITIES AND RESTAURANTS
 userRouter.get('/', loginRequired, userController.index);
@@ -25,7 +26,7 @@ userRouter.delete('/:id([0-9]+)', userController.delete);
 userRouter.post('/city/:id([0-9]+)', loginRequired, user_citiesController.saveForUser);
 userRouter.delete('/city/:id([0-9]+)', cityController.find, user_citiesController.removeForUser);
 
-userRouter.post('/restaurant/:id([0-9]+)', loginRequired, user_restaurantsController.saveForUser);
+userRouter.post('/restaurant/:id([0-9]+)', loginRequired, openRestaurant, restaurantController.create, user_restaurantsController.saveForUser);
 userRouter.delete('/restaurant/:id([0-9]+)', restaurantController.find, user_restaurantsController.removeForUser);
 
 module.exports = userRouter;

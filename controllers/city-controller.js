@@ -12,6 +12,7 @@ cityController.index = (req, res, next) => {
 };
 
 cityController.show = (req, res, next) => {
+    console.log('CITY CONTROLS', res.locals)
     res.render('city/index', {
         message: 'ok',
         data: {
