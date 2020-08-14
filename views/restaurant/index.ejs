@@ -1,9 +1,24 @@
 <%- include('../partials/boilerplate') %>
 
 <h3><%= data.name %></h3>
+<a href="<%= data.restUrl %>">Zomato Link</a>
 
+<!-- LOCATION IS AN OBJECT -->
+<!-- CUISINES IS AN ARRAY -->
 
-<form method="POST" action="/user/restaurants/<%= data.id %>">
-    <input type="submit" value="Add to <%= data.user.username %>'s Page">
+<p>Schedule: <%= data.times %></p>
+
+<img src="<%= data.photo %> ">
+<a href="<%= data.photoAlbum %> ">Photo Album</a>
+
+<a href="<%= data.menu %> ">Menu</a>
+
+<p>Phone Number: <%= data.phone %></p>
+
+<form method="POST" action="/user/restaurant/<%= data.id %>">
+    <input type="submit" value="Add <%= data.name %> to My Page">
+</form>
+<form method="GET" action="/search">
+    <input type="submit" value="Back to Search">
 </form>
 <%- include('../partials/end') %>

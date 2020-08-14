@@ -4,12 +4,8 @@ class Restaurant {
     constructor(rest) {
         this.id = rest.id;
         this.name = rest.name;
-        this.address = rest.address;
-        this.cuisine = rest.cuisine;
-        this.restaurant_url = rest.restaurant_url
-        this.menu_url = rest.menu_url;
-        this.photos_url = rest.photos_url;
         this.city_id = rest.city_id;
+        this.zomato_id = rest.zomato_id;
     }
 
     static findByName(name) {
@@ -36,9 +32,9 @@ class Restaurant {
         return db
         .one(
             `INSERT INTO restaurants
-            (name, address, cuisine, restaurant_url, menu_url, photos_url, city_id)
+            (name, city_id, zomato_id)
             VALUES
-            ($/name/, $/address/, $/cuisine/, $/restaurant_url/, $/menu_url/, $/photos_url/, $/city_id/)
+            ($/name/, $/city_id/, $/zomato_id/)
             RETURNING *`,
             this
         )

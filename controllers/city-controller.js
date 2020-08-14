@@ -12,7 +12,6 @@ cityController.index = (req, res, next) => {
 };
 
 cityController.show = (req, res, next) => {
-    console.log('LIST OF RESTS', res.locals.nearby_restaurants)
     res.render('city/index', {
         message: 'ok',
         data: {

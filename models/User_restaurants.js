@@ -6,12 +6,12 @@ class User_restaurants {
     constructor(user_rest) {
         this.id = user_rest.id;
         this.user_id = user_rest.user_id;
-        this.city_id = user_rest.city_id;
+        this.restaurant_id = user_rest.restaurant_id;
     }
 
-    static getOneForUser(id, city_id) {
+    static getOneForUser(id, restaurant_id) {
         return db
-        .oneOrNone('SELECT * FROM user_restaurants WHERE user_id = $1 AND city_id = $2', [id, city_id])
+        .oneOrNone('SELECT * FROM user_restaurants WHERE user_id = $1 AND restaurant_id = $2', [id, restaurant_id])
         .then(user_rest => new this(user_rest))
         .catch(err => console.log(err));
     }
@@ -20,9 +20,9 @@ class User_restaurants {
         return db
         .one(
             `INSERT INTO user_restaurants
-            (user_id, city_id)
+            (user_id, restaurant_id)
             VALUES
-            ($/user_id/, $/city_id/)
+            ($/user_id/, $/restaurant_id/)
             RETURNING *`,
             this
         )

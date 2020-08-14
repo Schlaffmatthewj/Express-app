@@ -1,9 +1,7 @@
 const fetch = require('node-fetch');
-const restaurantController = require('../../controllers/restaurant-controller');
 require('dotenv').config();
 
 const openRestaurant = (req, res, next) => {
-    console.log('PARAMS', req.params.id)
     fetch(`https://developers.zomato.com/api/v2.1/restaurant?res_id=${req.params.id}
     `, {
         headers: {
@@ -40,4 +38,6 @@ const openRestaurant = (req, res, next) => {
     });
 }
 
-module.exports = openRestaurant;
+module.exports = {
+    openRestaurant,
+}

@@ -3,9 +3,10 @@ const userRouter = express.Router();
 
 const userController = require('../controllers/user-controller');
 const user_citiesController = require('../controllers/user_cities-controller');
+const user_restaurantsController = require('../controllers/user_restaurants-controller');
 const cityController = require('../controllers/city-controller');
-const { loginRedirect, loginRequired } = require('../services/auth/auth-helpers');
 const restaurantController = require('../controllers/restaurant-controller');
+const { loginRedirect, loginRequired } = require('../services/auth/auth-helpers');
 
 // NEED TO ADD THE MIDDLE WEAR THAT FINDS CITIES AND RESTAURANTS
 userRouter.get('/', loginRequired, userController.index);
