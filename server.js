@@ -55,3 +55,12 @@ app.use('*', (req, res) => {
 app.use((err, req, res, next) => {
     res.status(500).send({ err, message: err.message });
 });
+
+
+
+// QueryResultError {
+//     code: queryResultErrorCode.multiple
+//     message: "Multiple rows were not expected."
+//     received: 2
+//     query: "SELECT * FROM user_cities WHERE user_id = 24 AND city_id = 44"
+// }

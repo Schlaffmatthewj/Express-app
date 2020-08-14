@@ -25,10 +25,25 @@ cityController.show = (req, res, next) => {
 cityController.find = (req, res, next) => {
     City.getById(req.params.id)
     .then(city => {
-        res.locals.city_id = city.id;
+        res.locals.long = city.longitude;
+        res.locals.lat = city.latitude;
         next();
     })
     .catch(next);
+    // .then(city => {
+    //     // console.log(city)
+    //     let obj = {
+    //         longitude: city.longitude,
+    //         latitude: city.latitude,
+    //         city_id: city.id,
+    //     }
+    //     return obj;
+    // })
+    // .then(thing => {
+    //     res.locals.thing = thing;
+    //     next();
+    // })
+    // .catch(next);
 }
 
 cityController.create = (req, res, next) => {
@@ -40,6 +55,7 @@ cityController.create = (req, res, next) => {
     .save()
     .then((savedCity) => {
         res.locals.city_id = savedCity.id;
+        console.log('HELLOOOOOOO')
         next();
     })
     .catch(next);

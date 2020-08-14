@@ -1,5 +1,4 @@
 const db = require('../db/config');
-const City = require('./City');
 
 class User {
     constructor(user) {
@@ -14,7 +13,7 @@ class User {
         .oneOrNone('SELECT * FROM users WHERE username = $1', username)
         .then(user => {
             if (user) return new this(user);
-            throw new Error('no user found');
+            throw new Error('No User Found');
         })
         .catch(err => console.log(err));
     }
@@ -24,7 +23,7 @@ class User {
         .oneOrNone('SELECT * FROM users WHERE id = $1', id)
         .then(user => {
             if (user) return new this(user);
-            throw new Error('no user found');
+            throw new Error('No User Found');
         })
         .catch(err => console.log(err));
     }
@@ -34,7 +33,8 @@ class User {
         .one(
             `INSERT INTO users
             (username, email, password_digest)
-            VALUES ($/username/, $/email/, $/password_digest/)
+            VALUES 
+            ($/username/, $/email/, $/password_digest/)
             RETURNING *`,
             this
         )
