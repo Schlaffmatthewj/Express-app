@@ -1,11 +1,9 @@
 <%- include('../partials/boilerplate') %>
 
-<h3>City Page</h3>
-<p>TRY TO GET ONE CITY ON HERE</p>
-<ul>
-    <% console.log('ON THE PAGE', data.tastes) %>
-</ul>
+<h3><%= data.city.name %>'s Page</h3>
 
-
+<form method="POST" action="/user/city/<%= data.city.id %>">
+    <input type="submit" value="Add <%= data.city.name %> to MY PAGE" />
+</form>
 
 <%- include('../partials/end') %>

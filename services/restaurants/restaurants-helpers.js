@@ -14,8 +14,7 @@ const openRestaurant = (res, req, next) => {
     })
     .then(digging => digging.popularity.top_cuisines)
     .then(dugUp => {
-        console.log('WHAT DO WE HAVE TO WORK WITH', res.locals)
-        res.locals.tastes = dugUp;
+        console.log('WHAT DO WE HAVE TO WORK WITH', dugUp)
         next();
     })
     // .then(each => {

@@ -7,6 +7,8 @@ const session = require('express-session');
 const passport = require('passport');
 
 const authRouter = require('./routes/auth-router');
+const cityRouter = require('./routes/city-router');
+const restaurantRouter = require('./routes/restaurant-router');
 const searchRouter = require('./routes/search-router');
 const userRouter = require('./routes/user-router');
 
@@ -39,6 +41,8 @@ app.get('/', (req, res) => res.render('index'));
 app.get('/about', (req, res) => res.render('about'));
 
 app.use('/auth', authRouter);
+app.use('/city', cityRouter);
+app.use('/restaurant', restaurantRouter);
 app.use('/search', searchRouter);
 app.use('/user', userRouter);
 

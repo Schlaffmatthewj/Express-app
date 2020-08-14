@@ -2,11 +2,6 @@ const db = require('../db/config');
 const City = require('../models/City');
 
 
-
-
-// THIS PAGE IS INACCURATE
-
-
 class User_cities {
     constructor(user_cities) {
         this.id = user_cities.id;
@@ -14,13 +9,13 @@ class User_cities {
         this.city_id = user_cities.city_id;
     }
 
-    static getAllByUser_id(id) {
+    static getOneForUser(id, city_id) {
+        // console.log('User ID', id);
+        // console.log('City ID', city_id);
         return db
-        .manyOrNone('SELECT * FROM user_cities WHERE user_id = $1', id)
-        .then(allCities => allCities.map(city => {
-            console.log('GETALLBYUSERID', city);
-            return City.getById(city.city_id);
-        }))
+        .oneOrNone('SELECT * FROM user_cities WHERE user_id = $1 AND city_id = $2', [id, city_id])
+        .then(user_city => new this(user_city))
+        .catch(err => console.log(err));
     }
 
     save() {
@@ -33,7 +28,12 @@ class User_cities {
             RETURNING *`,
             this
         )
-        .then(savedFav => Object.assign(this, savedFav));
+        .then(savedFav => Object.assign(this, savedFav))
+        .catch(err => console.log(err));
+    }
+
+    delete() {
+        return db.oneOrNone('DELETE FROM user_cities WHERE id = $1', this.id)
     }
 };
 

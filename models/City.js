@@ -11,16 +11,27 @@ class City {
     static getAll() {
         return db
         .manyOrNone('SELECT * FROM cities ORDER BY name ASC')
-        .then(cities => cities.map(city => new this(city)));
+        .then(cities => cities.map(city => new this(city)))
+        .catch(err => console.log(err));
+    }
+
+    static getAllForUser(user_id) {
+        return db
+        .manyOrNone(
+            `SELECT * FROM users
+            JOIN user_cities ON users.id = user_cities.user_id
+            JOIN cities ON user_cities.city_id = cities.id
+            WHERE users.id = $1`, user_id
+        )
+        .then(cities => cities.map(city => new this(city)))
+        .catch(err => console.log(err));
     }
 
     static getById(id) {
         return db
         .oneOrNone('SELECT * FROM cities WHERE id = $1', id)
-        .then(city => {
-            return city;
-        })
-        .catch(err => err);
+        .then(city => new this(city))
+        .catch(err => console.log(err));
     }
 
     save() {
@@ -33,13 +44,9 @@ class City {
             RETURNING *`,
             this
         )
-        .then(savedCity => Object.assign(this, savedCity));
+        .then(savedCity => Object.assign(this, savedCity))
+        .catch(err => console.log(err));
     }
-
-    // delete() {
-    //     // THIS MAY NEED TO ONLY BE FOR THE RELATIONSHIP  NEVER DELETE CITY DATA
-    //     return db.oneOrNone('DELETE FROM cities WHERE id = $1', this.id);
-    // }
 };
 
 module.exports = City;

@@ -12,16 +12,24 @@ cityController.index = (req, res, next) => {
 };
 
 cityController.show = (req, res, next) => {
-    // console.log()
-    // City.getById()
-    // .then(city => {
-    //     res.render('city/index', {
-    //         message: 'ok',
-    //         data: { city },
-    //     });
-    // })
-    // .catch(next);
+    City.getById(res.locals.city_id || req.params.id)
+    .then(city => {
+        res.render('city/index', {
+            message: 'ok',
+            data: { city },
+        });
+    })
+    .catch(next);
 };
+
+cityController.find = (req, res, next) => {
+    City.getById(req.params.id)
+    .then(city => {
+        res.locals.city_id = city.id;
+        next();
+    })
+    .catch(next);
+}
 
 cityController.create = (req, res, next) => {
     new City({
@@ -35,10 +43,6 @@ cityController.create = (req, res, next) => {
         next();
     })
     .catch(next);
-};
-
-cityController.delete = (req, res, next) => {
-    // THIS WILL ONLY DELETE THE USERS RELATIONSHIP
 };
 
 module.exports = cityController;

@@ -5,8 +5,6 @@ const userController = require('../controllers/user-controller');
 const user_citiesController = require('../controllers/user_cities-controller');
 const cityController = require('../controllers/city-controller');
 const authHelpers = require('../services/auth/auth-helpers');
-const { getCityCoords } = require('../services/city/city-helpers');
-const { openRestaurant } = require('../services/restaurants/restaurants-helpers');
 
 // NEED TO ADD THE MIDDLE WEAR THAT FINDS CITIES AND RESTAURANTS
 userRouter.get('/', authHelpers.loginRequired, userController.index);
@@ -21,6 +19,9 @@ userRouter.get('/:id([0-9]+)/edit', (req, res) => {
 });
 userRouter.delete('/:id([0-9]+)', userController.delete);
 // THIS NEEDS TO CLEAR OUT THE JOIN TABLES ALSO
+
+userRouter.post('/city/:id([0-9]+)', user_citiesController.saveForUser);
+userRouter.delete('/city/:id([0-9]+)', cityController.find, user_citiesController.removeForUser);
 
 
 

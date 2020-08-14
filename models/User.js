@@ -15,7 +15,8 @@ class User {
         .then(user => {
             if (user) return new this(user);
             throw new Error('no user found');
-        });
+        })
+        .catch(err => console.log(err));
     }
 
     static getById(id) {
@@ -24,7 +25,8 @@ class User {
         .then(user => {
             if (user) return new this(user);
             throw new Error('no user found');
-        });
+        })
+        .catch(err => console.log(err));
     }
 
     save() {
@@ -36,7 +38,8 @@ class User {
             RETURNING *`,
             this
         )
-        .then(savedUser => Object.assign(this, savedUser));
+        .then(savedUser => Object.assign(this, savedUser))
+        .catch(err => console.log(err));
     }
 
     update(changes) {
@@ -51,24 +54,14 @@ class User {
             RETURNING *`,
             this
         )
-        .then(updatedUser => Object.assign(this, updatedUser));
+        .then(updatedUser => Object.assign(this, updatedUser))
+        .catch(err => console.log(err));
     }
 
     // THIS NEED TO CLEAR OUT THE JOIN TABLES ALSO
     delete() {
         return db.oneOrNone('DELETE FROM users WHERE id = $1', this.id);
     }
-
-    // findUserCities() {
-    //     return db
-    //     .manyOrNone(
-    //         `SELECT * FROM cities
-    //         JOIN user_cities ON cities.id = user_cities.city_id
-    //         JOIN users ON user_cities.user_id = users.id
-    //         WHERE users.id = $1`, this.id
-    //     )
-    //     .then(cities => cities.map(city => new City()
-    // }
 };
 
 module.exports = User;

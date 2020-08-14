@@ -4,13 +4,13 @@
 <div class="allCities">
     <ul>
         <% for (let city of data.cities) { %>
-            <li><a href="/search/city/fetch"><%= city.name %></a></li>
+            <li><a href="/city/<%= city.id %>"><%= city.name %></a></li>
         <% } %>
     </ul>
 </div>
 
-<form method="POST" action="/user/restaurant">
-    <input type="submit" value="restaurants" />
+<form method="GET" action="/restaurant/fetch">
+    <input type="submit" value="Search Restaurants *DUD*" />
 </form>
 
 <form method="GET" action="/search/new">
