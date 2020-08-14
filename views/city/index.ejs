@@ -1,9 +1,21 @@
 <%- include('../partials/boilerplate') %>
 
-<h3><%= data.city.name %>'s Page</h3>
+<h3><%= data.city_name %> PAGE</h3>
+<% data.city_cuisine.map(el => { %>
+    <p><%= el %></p>
+<% }) %>
+<a href="<%= data.city_link %>" target="_blank">City Link</a>
 
-<form method="POST" action="/user/city/<%= data.city.id %>">
-    <input type="submit" value="Add <%= data.city.name %> to MY PAGE" />
+<ul>
+    <% for (let rest of data.city_nearby) { %>
+        <li><%= rest %></li>
+    <% } %>
+</ul>
+<form method="GET" action="/search">
+    <input type="submit" value="Back to Main Search" />
+</form>
+<form method="POST" action="/user/city/<%= data.city_id %>">
+    <input type="submit" value="Add <%= data.city_name %> to MY PAGE" />
 </form>
 
 <%- include('../partials/end') %>

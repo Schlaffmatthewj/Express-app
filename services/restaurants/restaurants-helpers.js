@@ -13,6 +13,7 @@ const openRestaurant = (req, res, next) => {
         res.locals.top_cuisines = jsonRes.popularity.top_cuisines;
         res.locals.link = jsonRes.link;
         res.locals.nearBy = jsonRes.nearby_restaurants;
+        res.locals.id = res.locals.id;
         return jsonRes;
     })
     .then(() => next())

@@ -1,14 +1,4 @@
 <%- include('../partials/boilerplate') %>
 
-<h3><%= data.city_name %> PAGE</h3>
-<% data.city_cuisine.map(el => { %>
-    <p><%= el %></p>
-<% }) %>
-<a href="<%= data.city_link %>">City Link</a>
 
-<ul>
-    <% for (let rest of data.city_nearby) { %>
-        <li><%= rest %></li>
-    <% } %>
-</ul>
 <%- include('../partials/end') %>

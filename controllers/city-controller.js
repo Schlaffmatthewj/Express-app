@@ -27,23 +27,23 @@ cityController.find = (req, res, next) => {
     .then(city => {
         res.locals.long = city.longitude;
         res.locals.lat = city.latitude;
+        res.locals.id = city.id;
         next();
     })
     .catch(next);
-    // .then(city => {
-    //     // console.log(city)
-    //     let obj = {
-    //         longitude: city.longitude,
-    //         latitude: city.latitude,
-    //         city_id: city.id,
-    //     }
-    //     return obj;
-    // })
-    // .then(thing => {
-    //     res.locals.thing = thing;
-    //     next();
-    // })
-    // .catch(next);
+}
+
+cityController.page = (req, res, next) => {
+    res.render('city/index', {
+        message: 'ok',
+        data: {
+            city_name: res.locals.city_name,
+            city_cuisine: res.locals.top_cuisines,
+            city_link: res.locals.link,
+            city_nearby: res.locals.nearBy,
+            city_id: res.locals.id,
+        },
+    });
 }
 
 cityController.create = (req, res, next) => {
