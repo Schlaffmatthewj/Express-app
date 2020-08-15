@@ -5,7 +5,7 @@
     <p><%= el %></p>
 <% }) %>
 <a href="<%= data.city_link %>" target="_blank">City Link</a>
-
+<p><%= data.zomato_id %> </p>
 
 <ul>
     <% data.nearby_restaurants.map(rest => { %>
@@ -15,7 +15,6 @@
                 <li><%= rest.restaurant.location.address %></li>
                 <li><%= rest.restaurant.cuisines %></li>
                 <li><form method="GET" action="/restaurant/<%= rest.restaurant.id %>">
-                    <input type="number" name="city_id" value="<%= data.city_id %>" />
                     <input type="submit" value="More Info" />
                 </form></li>
             </ul>

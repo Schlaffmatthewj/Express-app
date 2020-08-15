@@ -3,6 +3,7 @@ const db = require('../db/config');
 class User {
     constructor(user) {
         this.id = user.id || null;
+        this.name = user.name;
         this.username = user.username;
         this.email = user.email;
         this.password_digest = user.password_digest;
@@ -32,9 +33,9 @@ class User {
         return db
         .one(
             `INSERT INTO users
-            (username, email, password_digest)
+            (username, name, email, password_digest)
             VALUES 
-            ($/username/, $/email/, $/password_digest/)
+            ($/username/, $/name/, $/email/, $/password_digest/)
             RETURNING *`,
             this
         )
@@ -48,6 +49,7 @@ class User {
         .oneOrNone(
             `UPDATE users SET
             username = $/username/,
+            name = $/name/,
             email = $/email/,
             password_digest = $/password_digest/
             WHERE id = $/id/

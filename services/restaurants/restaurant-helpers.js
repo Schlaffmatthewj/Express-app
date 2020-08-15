@@ -10,14 +10,15 @@ const openRestaurant = (req, res, next) => {
     })
     .then(fetchRes => fetchRes.json())
     .then(jsonRes => {
-        console.log('IS IT AT LEAST RIGHT HERE', req.params)
-        res.locals.id = jsonRes.id;
+        // console.log('IS IT AT LEAST RIGHT HERE', req.params);
+        res.locals.zomato_id = parseInt(jsonRes.id);
         res.locals.name = jsonRes.name;
         res.locals.restUrl = jsonRes.url;
         res.locals.location = {
             address: jsonRes.location.address,
             locality: jsonRes.location.locality,
             city: jsonRes.location.city,
+            city_id: jsonRes.location.city_id,
             zip: jsonRes.location.zipcode,
         };
         res.locals.cuisines = jsonRes.cuisines;
@@ -30,7 +31,6 @@ const openRestaurant = (req, res, next) => {
         res.locals.photoAlbum = jsonRes.photos_url;
         res.locals.menu = jsonRes.menu_url;
         res.locals.phoneNum = jsonRes.phone_numbers;
-        res.locals.city_id = req.body.city_id;
         // MAY GET TO USER RATINGS ?????  /////
         next();
     })

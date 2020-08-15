@@ -9,7 +9,7 @@ class User_restaurants {
         this.restaurant_id = user_rest.restaurant_id;
     }
 
-    static getOneForUser(id, restaurant_id) {
+    static getOneForUser(id, restaurant_id) {  // NEED ZOMATO ID HERE
         return db
         .oneOrNone('SELECT * FROM user_restaurants WHERE user_id = $1 AND restaurant_id = $2', [id, restaurant_id])
         .then(user_rest => new this(user_rest))

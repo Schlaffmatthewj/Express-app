@@ -8,7 +8,7 @@
 
 <p>Schedule: <%= data.times %></p>
 
-<img src="<%= data.photo %> ">
+<img src="<%= data.photo %> " />
 <a href="<%= data.photoAlbum %> ">Photo Album</a>
 
 <a href="<%= data.menu %> ">Menu</a>
@@ -16,10 +16,9 @@
 <p>Phone Number: <%= data.phone %></p>
 
 <form method="POST" action="/user/restaurant/<%= data.id %>">
-    <input type="hidden" name="city_id" value="<%= data.city_id %>">
-    <input type="submit" value="Add <%= data.name %> to My Page">
+    <input type="submit" value="Add <%= data.name %> to My Page" />
 </form>
-<form method="GET" action="/search">
-    <input type="submit" value="Back to Search">
-</form>
+<button onclick="goBack()">Go Back</button>
+
+<script src="/src/main.js"></script>
 <%- include('../partials/end') %>

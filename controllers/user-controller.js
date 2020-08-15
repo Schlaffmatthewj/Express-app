@@ -13,6 +13,7 @@ userController.index = (req, res, next) => {
             data: {
                 user: req.user,
                 cities: cities,
+                restaurants: res.locals.restaurants,
             },
         });
     })
@@ -24,6 +25,7 @@ userController.create = (req, res, next) => {
     const hash = bcrypt.hashSync(req.body.password, salt);
     new User({
         username: req.body.username,
+        name: req.body.name,
         email: req.body.email,
         password_digest: hash,
     })

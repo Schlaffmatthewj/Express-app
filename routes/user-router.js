@@ -10,7 +10,7 @@ const { loginRedirect, loginRequired } = require('../services/auth/auth-helpers'
 const { openRestaurant } = require('../services/restaurants/restaurant-helpers');
 
 // NEED TO ADD THE MIDDLE WEAR THAT FINDS CITIES AND RESTAURANTS
-userRouter.get('/', loginRequired, userController.index);
+userRouter.get('/', loginRequired, restaurantController.index, userController.index);
 userRouter.post('/', userController.create);
 userRouter.get('/new', loginRedirect, (req, res) => res.render('auth/register'));
 
@@ -23,10 +23,10 @@ userRouter.get('/:id([0-9]+)/edit', (req, res) => {
 userRouter.delete('/:id([0-9]+)', userController.delete);
 // THIS NEEDS TO CLEAR OUT THE JOIN TABLES ALSO
 
-userRouter.post('/city/:id([0-9]+)', loginRequired, user_citiesController.saveForUser);
+userRouter.post('/city/:id([0-9]+)', loginRequired, cityController.find, user_citiesController.saveForUser);
 userRouter.delete('/city/:id([0-9]+)', cityController.find, user_citiesController.removeForUser);
 
-userRouter.post('/restaurant/:id([0-9]+)', loginRequired, openRestaurant, restaurantController.create, user_restaurantsController.saveForUser);
+userRouter.post('/restaurant/:id([0-9]+)', loginRequired, openRestaurant, cityController.findByZomato, restaurantController.create, user_restaurantsController.saveForUser);
 userRouter.delete('/restaurant/:id([0-9]+)', restaurantController.find, user_restaurantsController.removeForUser);
 
 module.exports = userRouter;
