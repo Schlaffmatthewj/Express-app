@@ -20,8 +20,8 @@
         <h3>Restaurants</h3>
         <ul>
             <% for (let rest of data.restaurants) { %>
-                <li><a href="/restaurant/<%= rest.zomato_id %>"> <%= rest.name %></a></li>
-                <form method="POST" action="/user/restaurant/<%= rest.zomato_id %>?_method=DELETE">
+                <li><a href="/restaurant/<%= rest.zomato_id %>"><%= rest.name %></a></li>
+                <form method="POST" action="/user/restaurant/<%= rest.id %>?_method=DELETE">
                     <input type="submit" value="Remove <%= rest.name %> " />
                 </form>
             <% } %>

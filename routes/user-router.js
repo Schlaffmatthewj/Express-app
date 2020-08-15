@@ -27,6 +27,6 @@ userRouter.post('/city/:id([0-9]+)', loginRequired, cityController.find, user_ci
 userRouter.delete('/city/:id([0-9]+)', cityController.find, user_citiesController.removeForUser);
 
 userRouter.post('/restaurant/:id([0-9]+)', loginRequired, openRestaurant, cityController.findByZomato, restaurantController.create, user_restaurantsController.saveForUser);
-userRouter.delete('/restaurant/:id([0-9]+)', restaurantController.find, user_restaurantsController.removeForUser);
+userRouter.delete('/restaurant/:id([0-9]+)', restaurantController.find, loginRequired, user_restaurantsController.removeForUser);
 
 module.exports = userRouter;
