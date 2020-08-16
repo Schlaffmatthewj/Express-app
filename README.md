@@ -1,6 +1,6 @@
 # Restaurant-Express App
 
-<a href="https://fathomless-everglades-51176.herokuapp.com/">Heroku</a>
+<a href="https://fathomless-everglades-51176.herokuapp.com/" target="_blank">Heroku</a>
 
 ### Description
 
@@ -8,15 +8,11 @@
 
 ## Project Workflow
 
-**I don't know why these will not load on the README in the browser, work fine in Github**
-**Here is a link to this complete repo**
-<a href="https://github.com/Schlaffmatthewj/Express-app">My-GitHub</a>
-
 ### Wire Frames
-<a href=https://imgur.com/f2RuPYQ>--WIREFRAMES--</a>
+<a href="https://imgur.com/f2RuPYQ" target="_blank">--WIREFRAMES--</a>
 
 ### Schema diagram
-<a href=https://imgur.com/a/mDWVMIm>--SCHEMA--</a>
+<a href="https://imgur.com/a/mDWVMIm" target="_blank">--SCHEMA--</a>
 
 ### User Story
 
@@ -57,10 +53,14 @@
 ## Specs
 
 - Technologies
+    - Heroku-postgres
     - Postgres-SQL
     - Node.js
     - Express
-    <!-- MORE -->
+    - Ejs
+    - Javascript
+    - HTML 5
+    - CSS 3
 
 - API
     - Zomato's API
