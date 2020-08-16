@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS user_cities (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL REFERENCES users(id),
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     city_id INTEGER NOT NULL REFERENCES cities(zomato_id)
 );

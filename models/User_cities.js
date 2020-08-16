@@ -9,6 +9,13 @@ class User_cities {
         this.city_id = user_cities.city_id; // NEEDS TO BE ZOMATO ID
     }
 
+    static getAll() {
+        return db
+        .manyOrNone('SELECT * FROM user_cities')
+        .then(all => all.map(el => new this(el)))
+        .catch(err => console.log(err));
+    }
+
     static getOneForUser(id, city_id) {
         // console.log('User ID', id);
         // console.log('City ID', city_id);             ZOMATO ID NOT CITY ID

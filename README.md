@@ -1,4 +1,4 @@
-# My Favorite Restaurants
+# Restaurant-Express App
 
 <a href="#">Heroku-----THIS IS A DUD CURRENTYLY-----</a>
 
@@ -9,6 +9,7 @@
 ## Project Workflow
 ### Wire Frames
 <a href=/README/wireframes.md>--WIREFRAMES--</a>
+<!-- FINISH THESE -->
 
 ### Schema diagram
 <a href=/README/schema.md>--SCHEMA--</a>
@@ -38,14 +39,15 @@
     - GET '/new', create new account
     - POST '/', adds new user to database
     - PUT '/:id', change name and email
-    - GET '/:id/edit' shows form to change user info
+    - GET '/:id/edit', shows form to change user info
     - DELETE '/:id', this user completely
     - POST '/city/:id', saves shortcut to city on profile
     - DELETE '/city/:id', this city from user profile (join table)
     - POST '/rest/:id', shows shortcut to restaurants on profile
     - DELETE 'rest/:id', this restaurant from user profile (join table)
 - GET '/search', shows all of the globally listed cities
-    - GET '/new' form for new city query
+    - GET '/new', form for new city query
+- GET '/about', this is a walkthrough of the app of web users
     
 
 ## Specs
@@ -54,12 +56,15 @@
     - Postgres-SQL
     - Node.js
     - Express
+    <!-- MORE -->
 
 - API
     - Zomato's API
         - Found city coordinates from simple text query
         - Then I used the coordinates to get a much more detailed pack of info from Zomato
         - Then used the specifics to find and get restaurants to show their information
+    - Pexel's API
+        - Takes requested city from search and retrieves first photo for the city's page
 
 - Modules
     - bcyrptjs
@@ -79,12 +84,32 @@
 
 ## My Favorite Bit From This Project
 
-- sneaking bits of info into the url as an 'id' but they were used for the next query for their params.
+- Sneaking bits of info into the url as an 'id' but they were used for the next query for the API request as their params.
+- Nesting user's restaurants inside of user cities where they belong too.
+- Adding Error show pages
 
 ## Fix or Add
 
 - 'Find Me' locator, or be able to order and list the cities by states.
+- More styling and more main.js
 
 ## Start-up Walk-through
 
-- Npm Install .. ETC ..
+
+- Github
+    - First fork your own version on Github
+    - Get link for clone from green link on your forked copy of repo
+    - In your terminal create a new directory without an existing Github repo
+    - "git clone" 'this copied link from Github'
+    - "cd" into this directory/repo
+- PSQL
+    - Enter "psql" from the CML and "CREATE DATABASE" with the exact name from the .env file
+    - "\c '.env_DB_NAME'" to get inside of the database
+    - "\i db/migrations/ (all five migrations)" to create the data tables for the database
+- NPM
+    -Once inside this root directory/cloned repo, run "npm install" in your CML
+    - This install all need modules to be able to run this application
+    - Enter "npm run dev" to start the server
+- Web Browser
+    - In your browser URL enter in "localhost:3000"
+    - ENJOY!

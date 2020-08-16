@@ -60,7 +60,6 @@ class User {
         .catch(err => console.log(err));
     }
 
-    // THIS NEED TO CLEAR OUT THE JOIN TABLES ALSO
     delete() {
         return db.oneOrNone('DELETE FROM users WHERE id = $1', this.id);
     }

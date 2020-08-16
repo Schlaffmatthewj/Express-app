@@ -1,4 +1,5 @@
 const City = require('../models/City');
+const User_cities = require('../models/User_cities');
 
 const cityController = {};
 
@@ -38,7 +39,8 @@ cityController.find = (req, res, next) => {
         res.locals.latitude = city.latitude;
         res.locals.id = city.id;
         res.locals.user = req.user;
-        next();
+        // console.log('RIGHT HERE', city.zomato_id, req.user.id)
+        next();        
     })
     .catch(next);
 }
