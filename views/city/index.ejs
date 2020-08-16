@@ -28,8 +28,9 @@
             <a href="<%= data.city_link %>" target="_blank">Zomato's <%= data.city_name %> Link</a>
         </div>
         <div class="rightCity">
-            <!-- I WANT A NEW FETCH FOR CITY PHOTOS -->
-            <img src="#" alt="panoramic of cities" />
+            <% if (data.photo) { %>
+                <img src="<%= data.photo %>" alt="photo of cities" />
+            <% } %>
         </div>
     </div>
     <div class="bottomCity">

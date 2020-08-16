@@ -263,6 +263,10 @@ footer {
     width: 100%;
 }
 
+.userName>div {
+    display: flex;
+}
+
 .usersPage {
     display: flex;
     align-items: flex-start;
@@ -338,9 +342,13 @@ footer {
     margin: 2%;
 }
 
+.rightCity {
+    width: 60%;
+}
+
 .rightCity>img {
-    width: 50%;
-    height: 250px;
+    width: 100%;
+    height: 300px;
 }
 
 .bottomCity {
