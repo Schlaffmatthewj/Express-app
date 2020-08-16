@@ -17,4 +17,14 @@ authRouter.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
+// authRouter.get('/failure', (req, res) => {
+//     res.render('errors/login', {
+//         message: 'Error',
+//         data: {
+//             Error: err,
+//             Error_message: err.message,
+//         },
+//     });
+// });
+
 module.exports = authRouter;

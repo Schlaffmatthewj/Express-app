@@ -1,0 +1,233 @@
+
+/*      BODY & PARTIALS      */
+
+body {
+    background-color: #85EDFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 7% auto;
+    width: 90%;
+}
+
+a {
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+    letter-spacing: 1px;
+    color: #F7943D;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+a:hover {
+    color: #952432;
+}
+
+form>input {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 1.25em;
+    font-weight: 300;
+    text-align: center;
+    background-color: #00D0F5;
+}
+
+/*      MY MAIN DIV FOR STYLING      */
+
+/*      .container FORMS     */
+/*      LOGIN & REGISTER       */
+/*      EDIT USER        */
+/*      NEW CITY SEARCH      */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}
+
+.container>form {
+    margin: 2% auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container>form>input {
+    background-color: wheat;
+}
+
+.container>form>input:last-child {
+    margin: 2% 0;
+    background-color: #00D0F5;
+}
+
+.container>form>input:last-child:hover {
+    background-color: #005066;
+}
+
+.container>h3 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.5em;
+    margin: 5%;
+}
+
+.container>button {
+    margin: 2%;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 1.25em;
+    font-weight: 300;
+    text-align: center;
+    background-color: #00D0F5;
+}
+
+.container>button:hover {
+    background-color: #005066;
+}
+
+strong {
+    font-weight: 600;
+}
+
+/*      HEADER       */
+
+header {
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 90%;
+    height: 75px;
+    text-transform: uppercase;
+    background-color: #DD5631;
+}
+
+.logo {
+    color: #00D0F5;
+    margin-left: 3%;
+    letter-spacing: 10px;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+nav {
+    margin-right: 2%;
+}
+
+.navList {
+    display: flex;
+    justify-content: space-evenly;
+    width: 450px;
+}
+
+.navList>li {
+    display: flex;
+    margin: 1%;
+    font-size: 1.25em;
+    background-color: #952432;
+    border: solid black 1.5px;
+    border-radius: 25px;
+}
+
+.navList>li:hover {
+    background-color: #F7943D;
+    border: solid white 1.5px;
+}
+
+/*      FOOTER       */
+
+footer {
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 90%;
+    height: 50px;
+    background-color: #DD5631;
+}
+
+.createdBy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}
+
+.createdBy>p {
+    text-align: center;
+    padding: 0 2%;
+}
+
+/*      HOME PAGE '/'    */
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 75%;
+    height: 500px;
+}
+
+.welcome>h1 {
+    color: #005066;
+    font-size: 3.5em;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+.loginReg {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    width: 400px;
+}
+
+.loginReg>form {
+    margin: 3%;
+}
+
+.loginReg>form>input:hover {
+    background-color: #005066;
+}
+
+/*      SEARCH PAGE '/search'    */
+
+.allCities>ul {
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: center;
+    text-align: center;
+}
+
+/*      ERROR HANDLERS       */
+
+.container>p {
+    font-size: 1.3em;
+    margin: 2%;
+}

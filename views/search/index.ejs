@@ -1,16 +1,18 @@
 <%- include('../partials/boilerplate') -%>
 
-<h3>Main Search Page</h3>
-<div class="allCities">
-    <ul>
-        <% for (let city of data.cities) { %>
-            <li><a href="/city/<%= city.id %>"><%= city.name %></a></li>
-        <% } %>
-    </ul>
-</div>
+<div class="container">
+    <h3>Cities</h3>
+    <div class="allCities">
+        <ul>
+            <% for (let city of data.cities) { %>
+                <li><a href="/city/<%= city.id %>"><%= city.name %></a></li>
+            <% } %>
+        </ul>
+    </div>
 
-<form method="GET" action="/search/new">
-    <input type="submit" value="Start a New Search" />
-</form>
+    <form method="GET" action="/search/new">
+        <input type="submit" value="Start a New Search" />
+    </form>
+</div>
 
 <%- include('../partials/end') -%>

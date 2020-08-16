@@ -1,8 +1,12 @@
 <%- include('../partials/boilerplate') %>
 
-<form method="POST" action="/city">
-    <input type="text" name="name" placeholder="City, State" />
-    <input type="submit" value="Search" />
-</form>
-
+<div class="container">
+    <h3>Find new city</h3>
+    <form method="POST" action="/city">
+        <input type="text" name="name" placeholder="City, State" />
+        <input type="submit" value="Search" />
+    </form>
+    <button onclick="goBack()">Go Back</button>
+</div>
+<script src="/src/main.js"></script>
 <%- include('../partials/end') %>

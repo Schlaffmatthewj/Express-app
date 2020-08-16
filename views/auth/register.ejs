@@ -1,11 +1,15 @@
 <%- include('../partials/boilerplate') -%>
 
-<form method="POST" action="/user">
-    <input type="text" name="username" placeholder="Username" />
-    <input type="text" name="name" placeholder="Name" />
-    <input type="email" name="email" placeholder="Email" />
-    <input type="password" name="password" placeholder="Password" />
-    <input type="submit" value="Create New User" />
-</form>
-
+<div class="container">
+    <h3>Create new account</h3>
+    <form method="POST" action="/user">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="text" name="name" placeholder="Name" />
+        <input type="email" name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <input type="submit" value="Create New User" />
+    </form>
+    <button onclick="goBack()">Go Back</button>
+</div>
+<script src="/src/main.js"></script>
 <%- include('../partials/end') -%>

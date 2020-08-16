@@ -1,10 +1,10 @@
 # My Favorite Restaurants
 
-<a href="https://intense-dawn-13894.herokuapp.com/">Heroku</a>
+<a href="#">Heroku-----THIS IS A DUD CURRENTYLY-----</a>
 
 ### Description
 
-**Allows you to search by city and or use a "find me" feature to see you area's popular restaurants and cuisine.**
+**Allows you to search by city to see your area's popular restaurants and cuisine.**
 
 ## Project Workflow
 ### Wire Frames
@@ -15,11 +15,14 @@
 
 ### User Story
 
-- you can create a profile and have saved locations (cities).
-- saved cities will get various popular data from fetch on city cuisine and nearby locations.
-- you can save fav restaurants within city and view their menus and have available menus and links.
-- you can see saved cities, restaurants, menus, and shortcut-links to order from your profile.
-- add new cities, locations, and also remove them.
+- You can create a profile with your name, email, password and an username. 
+- You can edit your user's information and delete your user's account. 
+- There is a search page with preloaded cities and a button that allows you to search for more.
+- When on a city's page you will be able to save shortcuts to cities on your profile page.
+- City pages will get various popular data from Zomato's API on city cuisine and nearby locations.
+- The restaurants also have links to their own content and from their page you can save that shortcut also
+- Restaurant pages show their times, address, menu links and links to even more information.
+- You may also remove any city or restaurant from your profile page.
 
 ### HTTP Routes
 
@@ -27,41 +30,60 @@
 - GET '/auth'
     - GET '/login', sign into account
     - GET '/logout', signout of account
-- GET '/user', index shows all cities in database
+- GET '/city/:id', shows a single city's info
+    - POST '/', adds city to global search page
+- GET '/restaurant/:id', shows a single restaurant's info
+    - POST '/', adds restaurant's info to the database
+- GET '/user', index shows all shortcuts for a user
     - GET '/new', create new account
     - POST '/', adds new user to database
-    - GET '/:id', individual profile with personal shortcuts to cities & restaurants
-    - PUT '/:id', change username and email
+    - PUT '/:id', change name and email
+    - GET '/:id/edit' shows form to change user info
     - DELETE '/:id', this user completely
-    - GET '/city', shows all saved cities
-    - GET '/city/:id', shows single city's info
+    - POST '/city/:id', saves shortcut to city on profile
     - DELETE '/city/:id', this city from user profile (join table)
-    - GET '/rest', shows all saved restaurants
-    - GET '/rest/:id', shows single restaurants info
+    - POST '/rest/:id', shows shortcut to restaurants on profile
     - DELETE 'rest/:id', this restaurant from user profile (join table)
-- GET '/search'
-    - GET '/city', shows all available cities w/ new input available
-        - POST '/user/city', saves to user profile
-        - POST '/city', saves city in the city database
-    - GET '/rest', shows all new restaurants from selected city
-        - POST '/user/rest', saves restaurant to user profile & restaurant database
-        - POST '/rest', saves restaurant to the restaurant database
+- GET '/search', shows all of the globally listed cities
+    - GET '/new' form for new city query
+    
 
 ## Specs
 
 - Technologies
+    - Postgres-SQL
+    - Node.js
+    - Express
 
 - API
+    - Zomato's API
+        - Found city coordinates from simple text query
+        - Then I used the coordinates to get a much more detailed pack of info from Zomato
+        - Then used the specifics to find and get restaurants to show their information
 
 - Modules
+    - bcyrptjs
+    - body-parser
+    - cookie-parser
+    - dotenv
+    - ejs
+    - express
+    - express-session
+    - method-override
+    - morgan
+    - node-fetch
+    - nodemon
+    - passport
+    - passport-local
+    - pg-promise
 
 ## My Favorite Bit From This Project
 
-- IDK yet!!
+- sneaking bits of info into the url as an 'id' but they were used for the next query for their params.
 
 ## Fix or Add
 
-- I'd love to get comments into this.. potentially..
+- 'Find Me' locator, or be able to order and list the cities by states.
 
 ## Start-up Walk-through
 

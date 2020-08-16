@@ -32,7 +32,15 @@ userController.create = (req, res, next) => {
     .save()
     .then(user => {
         req.login(user, (err) => {
-            if (err) return next(err);
+            if (err) {
+                res.render('errors/two_users', {
+                    message: 'Error',
+                    data: {
+                        Error: err,
+                        Error_message: err.message,
+                    },
+                });
+            };
             res.redirect('/user');
         });
     })

@@ -1,9 +1,13 @@
 <%- include('../partials/boilerplate') -%>
 
-<form method="POST" action="/auth/login">
-    <input type="text" name="username" placeholder="Username" required />
-    <input type="password" name="password" placeholder="Password" required />
-    <input type="submit" value="Log in" />
-</form>
-
+<div class="container">
+    <h3>Login</h3>
+    <form method="POST" action="/auth/login">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="submit" value="Log in" />
+    </form>
+    <button onclick="goBack()">Go Back</button>
+</div>
+<script src="/src/main.js"></script>
 <%- include('../partials/end') -%>

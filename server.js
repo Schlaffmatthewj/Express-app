@@ -47,20 +47,21 @@ app.use('/search', searchRouter);
 app.use('/user', userRouter);
 
 app.use('*', (req, res) => {
-    res.status(404).send({
-        error: 'Not Found',
+    res.status(404).render('errors/no_page', {
+        message: 'Error',
+        data: {
+            Error: err,
+            Error_message: err.message,
+        },
     });
 });
 
 app.use((err, req, res, next) => {
-    res.status(500).send({ err, message: err.message });
+    res.status(500).render('errors/idk', {
+        message: 'Error',
+        data: {
+            Error: err,
+            Error_message: err.message,
+        },
+    });
 });
-
-
-
-// QueryResultError {
-//     code: queryResultErrorCode.multiple
-//     message: "Multiple rows were not expected."
-//     received: 2
-//     query: "SELECT * FROM user_cities WHERE user_id = 24 AND city_id = 44"
-// }

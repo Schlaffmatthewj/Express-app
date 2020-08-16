@@ -67,7 +67,15 @@ cityController.create = (req, res, next) => {
         res.locals.city_id = savedCity.id;
         next();
     })
-    .catch(next);
+    .catch(err => {
+        res.render('errors/two_cities', {
+            message: 'Error',
+            data: {
+                Error: err,
+                Error_message: err.message
+            },
+        })
+    });
 };
 
 module.exports = cityController;

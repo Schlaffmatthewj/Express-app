@@ -1,12 +1,15 @@
 <%- include('../partials/boilerplate') %>
 
-<form method="POST" action="/user/<%= user.id %>?_method=PUT">
-    <input type="text" name="name" value="<%= user.name %>" placeholder="Name" />
-    <input type="email" name="email" value="<%= user.email %>" placeholder="Email" />
-    <input type="submit" value="Make Changes" />
-</form>
-<form method="POST" action="/user/<%= user.id %>?_method=DELETE">
-    <input type="submit" value="DELETE USER" />
-</form>
-
+<div class="container">
+    <form method="POST" action="/user/<%= user.id %>?_method=PUT">
+        <input type="text" name="name" value="<%= user.name %>" placeholder="Name" />
+        <input type="email" name="email" value="<%= user.email %>" placeholder="Email" />
+        <input type="submit" value="Make Changes" />
+    </form>
+    <form method="POST" action="/user/<%= user.id %>?_method=DELETE">
+        <input type="submit" value="DELETE USER" />
+    </form>
+    <button onclick="goBack()">Go Back</button>
+</div>
+<script src="/src/main.js"></script>
 <%- include('../partials/end') %>
