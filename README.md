@@ -10,7 +10,7 @@
 
 **I don't know why these will not load on the README in the browser, work fine in Github**
 **Here is a link to this complete repo**
-<a href="https://github.com/Schlaffmatthewj/Express-app">GitHub</a>
+<a href="https://github.com/Schlaffmatthewj/Express-app">My-GitHub</a>
 
 ### Wire Frames
 <a href=/README/wireframes.md>--WIREFRAMES--</a>
