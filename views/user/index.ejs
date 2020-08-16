@@ -1,39 +1,65 @@
 <%- include('../partials/boilerplate') -%>
 
-<h3><%= data.user.username %>'s PAGE</h3>
-<div class="allCities">
-    <% if (data.cities) { %>
-        <h3>Cities</h3>
-        <ul>
-            <% for (let city of data.cities) { %>
-                <li><a href="/city/<%= city.id %>"><%= city.name %></a></li>
-                <form method="POST" action="/user/city/<%= city.id %>?_method=DELETE">
-                    <input type="submit" value="Remove <%= city.name %>" />
-                </form>
+<div class="user">
+    <div class="userName">
+        <h3><%= data.user.username %>'s Profile</h3>
+        <div>
+            <form method="GET" action="/user/<%= data.user.id %>/edit">
+                <input type="submit" value="Edit <%= data.user.name %>'s Info" />
+            </form>
+            <form method="GET" action="/auth/logout">
+                <input type="submit" value="Sign Off" />
+            </form>
+        </div>
+    </div>
+    <div class="usersPage">
+        <div class="cityRest">
+            <% if (data.cities) { %>
+                <h4>Cities & Restaurants</h4>
+                <ul>
+                    <% for (let city of data.cities) { %>
+                        <li>
+                            <div class="cityName">
+                                <h4><a href="/city/<%= city.id %>"><%= city.name %></a></h4>
+                                <form method="POST" action="/user/city/<%= city.id %>?_method=DELETE">
+                                    <input type="submit" value="Remove: <%= city.name %>" />
+                                </form>
+                            </div>
+                            <ul>
+                                <% for (let rest of data.restaurants) { %>
+                                    <% if (city.id === rest.city_id) { %>
+                                        <li>
+                                            <div class="restName">
+                                                <h5><a href="/restaurant/<%= rest.zomato_id %>">--<%= rest.name %></a></h5>
+                                                <form method="POST" action="/user/restaurant/<%= rest.id %>?_method=DELETE">
+                                                    <input type="submit" value="Remove: <%= rest.name %> " />
+                                                </form>
+                                            </div>
+                                        </li>  
+                                    <% } %>
+                                <% } %>
+                            </ul>
+                        </li>
+                    <% } %>
+                </ul>
             <% } %>
-        </ul>
-    <% } %>
+        </div>
+        <div class="allRest">
+            <h4>All Restaurants</h4>
+            <ul>
+                <% for (let rest of data.restaurants) { %>
+                    <li>
+                        <div class="userRestList">
+                            <h5><a href="/restaurant/<%= rest.zomato_id %>"><%= rest.name %></a></h5>
+                            <form method="POST" action="/user/restaurant/<%= rest.id %>?_method=DELETE">
+                                <input type="submit" value="Remove <%= rest.name %> " />
+                            </form>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
 </div>
-
-<div class="allRestaurants">
-    <% if (data.restaurants) { %>
-        <h3>Restaurants</h3>
-        <ul>
-            <% for (let rest of data.restaurants) { %>
-                <li><a href="/restaurant/<%= rest.zomato_id %>"><%= rest.name %></a></li>
-                <form method="POST" action="/user/restaurant/<%= rest.id %>?_method=DELETE">
-                    <input type="submit" value="Remove <%= rest.name %> " />
-                </form>
-            <% } %>
-        </ul>
-    <% } %>
-</div>
-
-<form method="GET" action="/user/<%= data.user.id %>/edit">
-    <input type="submit" value="Edit <%= data.user.name %>'s Info" />
-</form>
-<form method="GET" action="/auth/logout">
-    <input type="submit" value="Sign Off" />
-</form>
-
+<script src="/src/main.js"></script>
 <%- include('../partials/end') -%>

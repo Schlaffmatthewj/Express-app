@@ -20,6 +20,7 @@ cityController.show = (req, res, next) => {
             city_cuisine: res.locals.top_cuisines,
             city_link: res.locals.link,
             city_id: res.locals.id,
+            locality: res.locals.locality,
             zomato_city_id: res.locals.zomato_city_id,
             nearby_restaurants: res.locals.nearBy,
             user: res.locals.user,

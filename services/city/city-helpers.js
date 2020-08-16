@@ -9,8 +9,10 @@ const unPackCity = (req, res, next) => {
     })
     .then(fetchRes => fetchRes.json())
     .then(jsonRes => {
+        // console.log('JSON RES', jsonRes)
         res.locals.city_name = jsonRes.location.city_name;
-        res.locals.zomato_city_id = jsonRes.location.city_id
+        res.locals.zomato_city_id = jsonRes.location.city_id;
+        res.locals.locality = jsonRes.location.title;
         res.locals.top_cuisines = jsonRes.popularity.top_cuisines;
         res.locals.link = jsonRes.link;
         res.locals.nearBy = jsonRes.nearby_restaurants;

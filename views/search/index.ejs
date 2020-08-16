@@ -1,7 +1,15 @@
 <%- include('../partials/boilerplate') -%>
 
 <div class="container">
-    <h3>Cities</h3>
+    <div class="newSearch">
+        <form method="GET" action="/search/new">
+            <input type="submit" value="Start a New Search" />
+        </form>
+        <h3>Cities</h3>
+        <form method="GET" action="/user">
+            <input type="submit" value="My Shortcuts" />
+        </form>
+    </div>
     <div class="allCities">
         <ul>
             <% for (let city of data.cities) { %>
@@ -9,10 +17,5 @@
             <% } %>
         </ul>
     </div>
-
-    <form method="GET" action="/search/new">
-        <input type="submit" value="Start a New Search" />
-    </form>
 </div>
-
 <%- include('../partials/end') -%>

@@ -1,24 +1,42 @@
 <%- include('../partials/boilerplate') %>
 
-<h3><%= data.name %></h3>
-<a href="<%= data.restUrl %>">Zomato Link</a>
-
-<!-- LOCATION IS AN OBJECT -->
-<!-- CUISINES IS AN ARRAY -->
-
-<p>Schedule: <%= data.times %></p>
-
-<img src="<%= data.photo %> " />
-<a href="<%= data.photoAlbum %> ">Photo Album</a>
-
-<a href="<%= data.menu %> ">Menu</a>
-
-<p>Phone Number: <%= data.phone %></p>
-
-<form method="POST" action="/user/restaurant/<%= data.id %>">
-    <input type="submit" value="Add <%= data.name %> to My Page" />
-</form>
-<button onclick="goBack()">Go Back</button>
-
+<div class="container">
+    <div class="topRest">
+        <h3><%= data.name %></h3>
+        <div class="topRight">
+            <% if (data.user) { %>
+                <form method="POST" action="/user/restaurant/<%= data.id %>">
+                    <input type="submit" value="Add <%= data.name %> to My Page" />
+                </form>
+            <% } else { %>
+                <form method="GET" action="/auth/login">
+                    <input type="submit" value="Login In" />
+                </form>
+            <% } %>
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+    <div class="middleRest">
+        <div class="middleLeft">
+            <p><strong>Phone Number:</strong> <%= data.phone %></p>
+            <p><strong>Hours:</strong> <%= data.times %></p>
+            <p><strong>Address:</strong> <%= data.location.address %></p>
+            <p><strong>District:</strong> <%= data.location.locality %></p>
+            <p><strong>City:</strong> <%= data.location.city %></p>
+            <p><%= data.location.zipcode %></p>
+            <p><strong>Cuisine:</strong> <%= data.cuisines %></p>
+        </div>
+        <div class="middleRight">
+            <img src="<%= data.photo %>" alt="Restaurant Photos">
+            <div class="restLinkList">
+                <ul>
+                    <li><a href="<%= data.menu %>">Menu</a></li>
+                    <li><a href="<%= data.restUrl %>">Zomato's Restaurant Page</a></li>
+                    <li><a href="<%= data.photoAlbum %>">More Photos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="/src/main.js"></script>
 <%- include('../partials/end') %>

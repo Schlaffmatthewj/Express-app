@@ -1,38 +1,53 @@
 <%- include('../partials/boilerplate') %>
 
-<h3><%= data.city_name %> PAGE</h3>
-<% data.city_cuisine.map(el => { %>
-    <p><%= el %></p>
-<% }) %>
-<a href="<%= data.city_link %>" target="_blank">City Link</a>
-<p><%= data.zomato_id %> </p>
-
-<ul>
-    <% data.nearby_restaurants.map(rest => { %>
-        <li><%= rest.restaurant.name %></li>
-        <li>
-            <ul>
-                <li><%= rest.restaurant.location.address %></li>
-                <li><%= rest.restaurant.cuisines %></li>
-                <li><form method="GET" action="/restaurant/<%= rest.restaurant.id %>">
-                    <input type="submit" value="More Info" />
-                </form></li>
-            </ul>
-        </li>
-    <% }) %>
-</ul>
-
-
-<% if (user) { %>
-    <form method="GET" action="/user">
-        <input type="submit" value="Back to <%= data.user.username %>'s'  Page"/>
-    </form>
-<% } %>
-<form method="GET" action="/search">
-    <input type="submit" value="Back to Main Search" />
-</form>
-<form method="POST" action="/user/city/<%= data.city_id %>">
-    <input type="submit" value="Add <%= data.city_name %> to MY PAGE" />
-</form>
-
+<div class="container">
+    <div class="topCity">
+        <h3><%= data.city_name %>'s Page</h3>
+        <div class="cityLinks">
+            <% if (user) { %>
+                <form method="POST" action="/user/city/<%= data.city_id %>">
+                    <input type="submit" value="Bookmark: <%= data.city_name %>" />
+                </form>
+            <% } else { %>
+                <form method="GET" action="/auth/login">
+                    <input type="submit" value="Login In" />
+                </form>
+            <% } %>
+            <form method="GET" action="/search">
+                <input type="submit" value="Main Search" />
+            </form>
+        </div>
+    </div>
+    <div class="middleCity">
+        <div class="leftCity">
+            <p class="locality"><strong>District:</strong> <%= data.locality %></p>
+            <p class="cuisTitle"><strong>Cuisines:</strong></p>
+            <% data.city_cuisine.map(el => { %>
+                <p class="cuisines"><%= el %></p>
+            <% }) %>
+            <a href="<%= data.city_link %>" target="_blank">Zomato's <%= data.city_name %> Link</a>
+        </div>
+        <div class="rightCity">
+            <!-- I WANT A NEW FETCH FOR CITY PHOTOS -->
+            <img src="#" alt="panoramic of cities" />
+        </div>
+    </div>
+    <div class="bottomCity">
+        <ul>
+            <% data.nearby_restaurants.map(rest => { %>
+                <li class="listRestName"><h4><%= rest.restaurant.name %></h4>
+                    <ul>
+                        <li><%= rest.restaurant.location.address %></li>
+                        <li><%= rest.restaurant.cuisines %></li>
+                        <li class="listForm">
+                            <form method="GET" action="/restaurant/<%= rest.restaurant.id %>">
+                                <input type="submit" value="More Info" />
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
 <%- include('../partials/end') %>
