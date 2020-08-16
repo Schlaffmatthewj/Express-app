@@ -1,6 +1,6 @@
 # Restaurant-Express App
 
-<a href="#">Heroku-----THIS IS A DUD CURRENTYLY-----</a>
+<a href="https://fathomless-everglades-51176.herokuapp.com/">Heroku</a>
 
 ### Description
 
@@ -9,7 +9,6 @@
 ## Project Workflow
 ### Wire Frames
 <a href=/README/wireframes.md>--WIREFRAMES--</a>
-<!-- FINISH THESE -->
 
 ### Schema diagram
 <a href=/README/schema.md>--SCHEMA--</a>
