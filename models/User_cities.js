@@ -20,8 +20,8 @@ class User_cities {
         // console.log('User ID', id);
         // console.log('City ID', city_id);             ZOMATO ID NOT CITY ID
         return db
-        .oneOrNone('SELECT * FROM user_cities WHERE user_id = $1 AND city_id = $2', [id, city_id])
-        .then(user_city => new this(user_city))
+        .manyOrNone('SELECT * FROM user_cities WHERE user_id = $1 AND city_id = $2', [id, city_id])
+        .then(user_city => new this(user_city[0]))
         .catch(err => console.log(err));
     }
 

@@ -1,4 +1,5 @@
 const db = require('../db/config');
+const restaurantController = require('../controllers/restaurant-controller');
 
 class Restaurant {
     constructor(rest) {

@@ -21,7 +21,7 @@
 - There is a search page with preloaded cities and a button that allows you to search for more.
 - When on a city's page you will be able to save shortcuts to cities on your profile page.
 - City pages will get various popular data from Zomato's API on city cuisine and nearby locations.
-- The restaurants also have links to their own content and from their page you can save that shortcut also
+- The restaurants also have links to their own content and from their page you can save that shortcut also.
 - Restaurant pages show their times, address, menu links and links to even more information.
 - You may also remove any city or restaurant from your profile page.
 

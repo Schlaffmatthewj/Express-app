@@ -62,7 +62,7 @@ restaurantController.create = (req, res, next) => {
         res.locals.city_id = savedRest.city_id;
         next();
     })
-    .catch(next);
+    .catch(() => res.render('errors/two_restaurants'));
 };
 
 module.exports = restaurantController;

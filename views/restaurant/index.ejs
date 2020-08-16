@@ -27,7 +27,9 @@
             <p><strong>Cuisine:</strong> <%= data.cuisines %></p>
         </div>
         <div class="middleRight">
-            <img src="<%= data.photo %>" alt="Restaurant Photos">
+            <% if (data.photo) { %>
+                <img src="<%= data.photo %>" alt="Restaurant Photos">
+            <% } %>
             <div class="restLinkList">
                 <ul>
                     <li><a href="<%= data.menu %>">Menu</a></li>
