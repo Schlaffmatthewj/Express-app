@@ -60,7 +60,7 @@ cityController.findByZomato = (req, res, next) => {
 
 cityController.create = (req, res, next) => {
     new City({
-        name: req.body.name,
+        name: res.locals.name,
         zomato_id: res.locals.zomato_id,
         longitude: res.locals.longitude,
         latitude: res.locals.latitude,

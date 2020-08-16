@@ -13,10 +13,10 @@
 <a href="https://github.com/Schlaffmatthewj/Express-app">My-GitHub</a>
 
 ### Wire Frames
-<a href=/README/wireframes.md>--WIREFRAMES--</a>
+<a href=https://imgur.com/f2RuPYQ>--WIREFRAMES--</a>
 
 ### Schema diagram
-<a href=/README/schema.md>--SCHEMA--</a>
+<a href=https://imgur.com/a/mDWVMIm>--SCHEMA--</a>
 
 ### User Story
 

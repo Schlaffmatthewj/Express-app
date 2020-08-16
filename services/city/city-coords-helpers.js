@@ -11,6 +11,8 @@ const getCityCoords = (req, res, next) => {
     .then(fetchRes => fetchRes.json())
     .then(jsonRes => jsonRes.location_suggestions)
     .then(locationRes => {
+        const name = locationRes.map(name => name.title);
+        res.locals.name = name.toString();
         res.locals.zomato_id = parseInt(locationRes.map(zo => zo.city_id));
         res.locals.longitude = parseFloat(locationRes.map(lo => lo.longitude));
         res.locals.latitude = parseFloat(locationRes.map(la => la.latitude));
