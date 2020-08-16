@@ -14,7 +14,7 @@ user_restaurantsController.saveForUser = (req, res, next) => {
 };
 
 user_restaurantsController.removeForUser = (req, res, next) => {
-    console.log('OVER HERE', req.user)
+    // console.log('OVER HERE', req.user)
     User_restaurants.getOneForUser(req.user.id, res.locals.zomato_id)
     .then(rest => rest.delete())
     .then(() => res.redirect('/user'))

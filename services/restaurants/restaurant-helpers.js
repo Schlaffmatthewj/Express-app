@@ -31,7 +31,6 @@ const openRestaurant = (req, res, next) => {
         res.locals.photoAlbum = jsonRes.photos_url;
         res.locals.menu = jsonRes.menu_url;
         res.locals.phoneNum = jsonRes.phone_numbers;
-        // MAY GET TO USER RATINGS ?????  /////
         next();
     })
     .catch(err => {
