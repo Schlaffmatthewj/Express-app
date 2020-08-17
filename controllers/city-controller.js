@@ -13,7 +13,7 @@ cityController.index = (req, res, next) => {
 };
 
 cityController.show = (req, res, next) => {
-    // console.log('CITY CONTROLS', res.locals)
+    console.log('CITY CONTROLS', req.user)
     res.render('city/index', {
         message: 'ok',
         data: {
@@ -25,7 +25,7 @@ cityController.show = (req, res, next) => {
             photo: res.locals.cityPhoto,
             zomato_city_id: res.locals.zomato_city_id,
             nearby_restaurants: res.locals.nearBy,
-            user: res.locals.user,
+            user: req.user,
         },
     });
 };

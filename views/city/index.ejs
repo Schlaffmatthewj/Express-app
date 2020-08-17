@@ -4,7 +4,7 @@
     <div class="topCity">
         <h3><%= data.city_name %>'s Page</h3>
         <div class="cityLinks">
-            <% if (user) { %>
+            <% if (data.user) { %>
                 <form method="POST" action="/user/city/<%= data.city_id %>">
                     <input type="submit" value="Bookmark: <%= data.city_name %>" />
                 </form>
