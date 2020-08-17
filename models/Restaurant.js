@@ -17,7 +17,7 @@ class Restaurant {
             if (rest) return new this(rest);
             throw new Error('No Restaurant Found')
         })
-        .catch(err => console.log(err));
+        // .catch(err => console.log(err));
     }
 
     static getById(id) {
@@ -27,7 +27,7 @@ class Restaurant {
             if (rest) return new this(rest);
             throw new Error('No Restaurant Found');
         })
-        .catch(err => console.log(err));
+        // .catch(err => console.log(err));
     }
 
     static getAllForUser(user_id) {
@@ -39,7 +39,7 @@ class Restaurant {
             WHERE users.id = $1`, user_id
         )
         .then(rests => rests.map(rest => new this(rest)))
-        .catch(err => console.log(err));
+        // .catch(err => console.log(err));
     };
 
     save() {
@@ -53,7 +53,7 @@ class Restaurant {
             this
         )
         .then(savedRest => Object.assign(this, savedRest))
-        .catch(err => console.log(err));
+        // .catch(err => console.log(err));
     }
 }
 
