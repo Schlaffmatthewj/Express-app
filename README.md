@@ -89,7 +89,7 @@
 ## My Favorite Bit From This Project
 
 - Sneaking bits of info into the url as an 'id' but they were used for the next query for the API request as their params.
-- Nesting user's restaurants inside of user cities where they belong too.
+- Nesting user's restaurants inside of user cities where they belong to.
 - Adding Error show pages
 
 ## Fix or Add
