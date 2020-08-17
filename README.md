@@ -111,7 +111,7 @@
     - "\c '.env_DB_NAME'" to get inside of the database
     - "\i db/migrations/ (all five migrations)" to create the data tables for the database
 - NPM
-    -Once inside this root directory/cloned repo, run "npm install" in your CML
+    - Once inside this root directory/cloned repo, run "npm install" in your CML
     - This install all need modules to be able to run this application
     - Enter "npm run dev" to start the server
 - Web Browser
